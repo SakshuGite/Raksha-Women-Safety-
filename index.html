@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violence Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='ok.jpg') }}");  
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+        h1 { font-size: 3em; margin-bottom: 20px; }
+        .message { font-size: 2em; margin: 20px 0; }
+        .button { 
+            padding: 15px 25px; 
+            font-size: 1.5em; 
+            color: white; 
+            background-color: rgba(255, 0, 0, 0.7); 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin-top: 20px;
+        }
+        .button:hover { background-color: rgba(255, 0, 0, 1); }
+        input[type="file"] { display: none; }
+        label { 
+            padding: 15px 25px; 
+            font-size: 1.5em; 
+            color: white; 
+            background-color: rgba(255, 0, 0, 0.7); 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        label:hover { background-color: rgba(255, 0, 0, 1); }
+    </style>
+</head>
+<body>
+    <h1>Violence Detection System</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="button">
+            Upload Video
+            <input type="file" id="file-upload" name="video" accept="video/*" required>
+        </label>
+        <br>
+        <button class="button" type="submit">Submit</button>
+    </form>
+    <p id="detectionMessage">Upload a video to analyze for violence.</p>
+</body>
+</html>

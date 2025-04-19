@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violence Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 { margin-bottom: 20px; }
+        p { font-size: 1.5em; margin: 20px 0; }
+        video { margin-top: 20px; }
+        .download-link {
+            font-size: 1.2em;
+            color: #ff6666;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Violence Detection Result</h1>
+
+    <p>Violence Detected: {{ violence_detected }}</p>
+    <p>Violence Percentage: {{ violence_percentage }}%</p>
+
+    {% if violence_detected %}
+    <h2 style="color: red;">Warning: Violence Detected in the Video!</h2>
+    {% else %}
+    <h2 style="color: green;">No Violence Detected in the Video.</h2>
+    {% endif %}
+
+    <video controls>
+        <source src="{{ url_for('processed_video', filename=processed_video) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <br><br>
+    <a class="download-link" href="{{ url_for('processed_video', filename=processed_video) }}" download>Download Processed Video</a>
+</body>
+</html>
